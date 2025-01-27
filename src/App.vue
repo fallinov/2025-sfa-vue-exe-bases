@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app class="bg-grey-lighten-5">
     <v-navigation-drawer v-model="drawer">
       <v-list density="compact" item-props :items="items" nav />
 
