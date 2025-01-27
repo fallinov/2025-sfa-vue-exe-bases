@@ -14,14 +14,19 @@
       <li>Ajouter un bouton qui modifie la valeur de <v-code>isHighlighted</v-code> lorsqu’il est cliqué.</li>
       <li>Faire en sorte que le texte du bouton change dynamiquement :</li>
       <ul>
-        <li>Afficher "Réinitialiser la couleur" si <v-code>isHighlighted</v-code> est <v-code>true</v-code>.</li>
-        <li>Afficher "Mettre en surbrillance" sinon.</li>
+        <li>Afficher <v-code>Réinitialiser la couleur</v-code> si <v-code>
+          isHighlighted</v-code> est <v-code>true</v-code>.</li>
+        <li>Afficher <v-code>Mettre en surbrillance</v-code> si <v-code>
+          isHighlighted</v-code> est <v-code>false</v-code>.</li>
       </ul>
       <li>
-        **Suggestion :** Utilisez des outils comme <v-code>Vue DevTools</v-code> pour observer les changements dynamiques dans les données pendant que vous interagissez avec la carte.
+        <strong>Suggestion</strong> : Utilisez des outils comme <v-code>Vue
+        DevTools</v-code> pour observer les changements dynamiques dans les données pendant que vous interagissez avec la carte.
       </li>
       <li>
-        **Astuce :** Vous pourriez avoir besoin de rendre les variables <v-code>isHighlighted</v-code>, <v-code>title</v-code> et <v-code>description</v-code> réactives. Pensez aux outils Vue.js adaptés !
+        <strong>Astuce :</strong> Vous pourriez avoir besoin de rendre les
+        variables
+        <v-code>isHighlighted</v-code>, <v-code>title</v-code> et <v-code>description</v-code> réactives. Pensez aux outils Vue.js adaptés !
       </li>
     </ul>
     <v-divider class="my-6" />

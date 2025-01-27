@@ -1,8 +1,7 @@
 <template>
-  <v-app class="bg-grey-lighten-5">
-    <v-navigation-drawer v-model="drawer">
-      <v-list density="compact" item-props :items="items" nav />
-
+  <v-app class="bg-grey-lighten-5 pa-0">
+    <v-navigation-drawer v-model="drawer" class="pa-0">
+      <v-list item-props :items="items" nav />
       <!--      <template #append>
           <v-list-item
             class="ma-2"
