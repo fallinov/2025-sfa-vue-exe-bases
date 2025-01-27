@@ -1,15 +1,17 @@
 <template>
-  <v-container>
+  <v-container max-width="640">
     <!-- Bloc d'objectifs pédagogiques -->
     <h1>Exercice 1</h1>
     <h2>Objectifs</h2>
     <ul>
       <li>Rendre le titre de la carte dynamique en utilisant le texte de la variable <v-code>title</v-code> pour remplacer <v-code>*** TITRE ***</v-code>.</li>
       <li>Rendre la description de la carte dynamique en utilisant le texte de la variable <v-code>description</v-code> pour remplacer <v-code>*** DESCRIPTION ***</v-code>.</li>
-      <li>Changer dynamiquement la couleur de la description en fonction de la valeur de <v-code>isHighlighted</v-code> :</li>
+      <li>Changer dynamiquement la couleur du texte de la description en
+        fonction de
+        la valeur de <v-code>isHighlighted</v-code> :</li>
       <ul>
-        <li>Bleu si <v-code>isHighlighted</v-code> est <v-code>true</v-code>.</li>
-        <li>Noir sinon.</li>
+        <li><v-code>blue</v-code> si <v-code>isHighlighted</v-code> est <v-code>true</v-code>.</li>
+        <li><v-code>black</v-code> si <v-code>isHighlighted</v-code> est<v-code>true</v-code>.</li>
       </ul>
       <li>Ajouter un bouton qui modifie la valeur de <v-code>isHighlighted</v-code> lorsqu’il est cliqué.</li>
       <li>Faire en sorte que le texte du bouton change dynamiquement :</li>
@@ -20,20 +22,21 @@
           isHighlighted</v-code> est <v-code>false</v-code>.</li>
       </ul>
       <li>
-        <strong>Suggestion</strong> : Utilisez des outils comme <v-code>Vue
-        DevTools</v-code> pour observer les changements dynamiques dans les données pendant que vous interagissez avec la carte.
+        <strong>Suggestion</strong> : Utilisez des outils comme <strong>Vue
+        DevTools</strong> pour observer les changements dynamiques dans les données pendant que vous interagissez avec la carte.
       </li>
       <li>
-        <strong>Astuce :</strong> Vous pourriez avoir besoin de rendre les
-        variables
-        <v-code>isHighlighted</v-code>, <v-code>title</v-code> et <v-code>description</v-code> réactives. Pensez aux outils Vue.js adaptés !
+        <strong>Astuce :</strong> Vous pourriez avoir besoin de rendre
+        <strong>réactives</strong> les yvariables
+        <v-code>isHighlighted</v-code>, <v-code>title</v-code> et <v-code>
+        description</v-code>.
       </li>
     </ul>
     <v-divider class="my-6" />
     <h2>Code à modifier</h2>
 
     <!-- Carte statique à transformer -->
-    <v-card class="mx-auto pa-2" max-width="400">
+    <v-card class="mx-auto my-6 pa-2" max-width="400">
       <!-- Remplacez *** TITRE *** par un contenu dynamique -->
       <v-card-title>*** TITRE ***</v-card-title>
 

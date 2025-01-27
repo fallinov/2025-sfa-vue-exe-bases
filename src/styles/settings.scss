@@ -8,10 +8,8 @@
 // @use 'vuetify/settings' with (
 //   $color-pack: false
 // );
-
-.v-code {
-  background: #212121;
-  color: #C6FF00;
+body {
+  font-size: 1.1rem;
 }
 
 /* Style des listes */
@@ -26,4 +24,10 @@ ul ul, ol ol, ul ol, ol ul {
 
 li {
   padding: .25em 0;
+}
+
+/* CODE */
+.v-code {
+  background: #212121;
+  color: #C6FF00;
 }
