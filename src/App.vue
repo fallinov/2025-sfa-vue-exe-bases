@@ -60,5 +60,17 @@ const items = ref([
     prependIcon: 'mdi-cube-outline', // Icône pour représenter les composants
     to: '/exercice5',
   },
+  {
+    title: 'Exercice 6',
+    subtitle: 'Observateurs et watchers',
+    prependIcon: 'mdi-eye-outline', // Icône pour un observateur
+    to: '/exercice6',
+  },
+  {
+    title: 'Exercice 7',
+    subtitle: 'Cycle de vie d’un composant',
+    prependIcon: 'mdi-lifebuoy', // Icône pour un cycle de vie
+    to: '/exercice7',
+  },
 ]);
 </script>
