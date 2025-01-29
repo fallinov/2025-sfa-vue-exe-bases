@@ -10,7 +10,6 @@
         max-width="500"
       >
         <v-text-field
-          v-model="newTask"
           label="Nouvelle tâche"
           clearable
         >
@@ -21,30 +20,25 @@
 
         <v-card-title>Liste des tâches</v-card-title>
 
-        <v-card-subtitle v-if="tasks.length === 0">
+        <v-card-subtitle>
           Il n'y a pas de tâches... chanceux ! 😄
         </v-card-subtitle>
 
         <v-list>
-          <v-list-item
-            v-for="task in sortTasks()"
-            :key="task.date"
-          >
+          <v-list-item>
             <template v-slot:prepend>
               <v-list-item-action start>
-                <v-checkbox-btn v-model="task.completed" />
+                <v-checkbox-btn />
               </v-list-item-action>
             </template>
 
-            <v-list-item-title
-              :class="{ done: task.completed }"
-            >
-              {{ task.title }}
+            <v-list-item-title>
+              *** TÂCHE ***
             </v-list-item-title>
 
             <v-list-item-subtitle>
-              Créé le {{ new Date(task.date).toLocaleDateString() }}
-              à {{ new Date(task.date).toLocaleTimeString() }}
+              Créé le *** DATE ***
+              à *** HEURE ***
             </v-list-item-subtitle>
           </v-list-item>
         </v-list>
@@ -77,8 +71,6 @@ const tasks = ref([
     "date": 1737856351933
   }
 ]);
-// Nouvelle tâche à ajouter
-const newTask = ref("");
 
 /**
  * Fonction qui ajoute une nouvelle tâche à la liste.
@@ -86,21 +78,12 @@ const newTask = ref("");
 function addTask () {
   // Ajout de la nouvelle tâche
   tasks.value.push({
-    "title": newTask.value,
+    "title": "Nouvelle tâche",
     "completed": false,
     "date": Date.now() // Date actuelle au format timestamp
   });
-  // Réinitialisation de la saisie
-  newTask.value = "";
 }
 
-/**
- * Fonction qui trie les tâches par état de complétion.
- * @returns {Array} - Tableau de tâches triées.
- */
-function sortTasks () {
-  return tasks.value.sort((a, b) => a.completed - b.completed);
-}
 </script>
 
 <style scoped lang="sass">
