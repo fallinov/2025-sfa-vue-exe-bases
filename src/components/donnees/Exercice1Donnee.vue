@@ -1,43 +1,61 @@
 <template>
   <h1>Exercice 1</h1>
-  <h2>Objectifs</h2>
-  <ul>
-    <li>Rendre le titre de la carte dynamique en utilisant le texte de la variable <v-code>title</v-code> pour remplacer <v-code>*** TITRE ***</v-code>.</li>
-    <li>Rendre la description de la carte dynamique en utilisant le texte de la variable <v-code>description</v-code> pour remplacer <v-code>*** DESCRIPTION ***</v-code>.</li>
-    <li>Changer dynamiquement la couleur du texte de la description en
-      fonction de
-      la valeur de <v-code>isHighlighted</v-code> :
-      <ul>
-        <li><v-code>blue</v-code> si <v-code>isHighlighted</v-code> est <v-code>true</v-code>.</li>
-        <li><v-code>black</v-code> si <v-code>isHighlighted</v-code> est
-          <v-code>false</v-code>.</li>
-      </ul>
-    </li>
-    <li>Ajouter un événement <v-code>click</v-code> sur le bouton qui inverse
-      la valeur <v-code>true/false</v-code> de <v-code>isHighlighted
-      </v-code>.</li>
-    <li>Faire en sorte que le texte du bouton change dynamiquement :
-      <ul>
-        <li>Afficher <v-code>Réinitialiser la couleur</v-code> si <v-code>
-          isHighlighted</v-code> est <v-code>true</v-code>.</li>
-        <li>Afficher <v-code>Mettre en surbrillance</v-code> si <v-code>
-          isHighlighted</v-code> est <v-code>false</v-code>.</li>
-      </ul>
-    </li>
-    <li>
-      <strong>Suggestion</strong> : Utilisez des outils comme <strong>Vue
-      DevTools</strong> pour modifier les valeurs de vos données et observer
-      les changements dynamiques sur la carte.
-    </li>
-    <li>
-      <strong>Astuce :</strong> Vous pourriez avoir besoin de rendre
-      <strong>réactives</strong> les variables
-      <v-code>isHighlighted</v-code>, <v-code>title</v-code> et <v-code>
-      description</v-code>.
-    </li>
-  </ul>
-  <v-divider class="my-6" />
-  <h2>Code à modifier</h2>
+  <div class="exe-objectifs">
+    <h2>Objectifs</h2>
+    <ul>
+      <li>
+        Rendre le <strong>titre de la carte dynamique</strong> en utilisant le
+        texte de la
+        variable <code>title</code> pour remplacer <code>*** TITRE ***</code>.
+      </li>
+      <li>
+        Rendre la <strong>description de la carte dynamique</strong> en
+        utilisant le texte de
+        la variable <code>description</code>
+        pour remplacer <code>*** DESCRIPTION ***</code>.
+      </li>
+      <li>
+        Changer dynamiquement la <strong>couleur du texte</strong> de la
+        description en
+        fonction de
+        la valeur de <code>isHighlighted</code> :
+        <ul>
+          <li><code>blue</code> si <code>isHighlighted</code> est
+            <code>true</code>.
+          </li>
+          <li><code>black</code> si <code>isHighlighted</code> est
+            <code>false</code>.
+          </li>
+        </ul>
+      </li>
+      <li>
+        Ajouter un événement <code>click</code> sur le <strong>bouton</strong>
+        qui inverse
+        la valeur <code>true/false</code> de <code>isHighlighted</code>.
+      </li>
+      <li>
+        Faire en sorte que le <strong>texte du bouton</strong> change
+        dynamiquement :
+        <ul>
+          <li>Afficher <code>"Réinitialiser la couleur"</code> si <code>
+            isHighlighted</code> est <code>true</code>.
+          </li>
+          <li>Afficher <code>"Mettre en surbrillance"</code> si <code>
+            isHighlighted</code> est <code>false</code>.
+          </li>
+        </ul>
+      </li>
+      <li>
+        <strong>Suggestion</strong> : Utilisez des outils comme <strong>Vue
+        DevTools</strong> pour modifier les valeurs de vos données et observer
+        les changements dynamiques sur la carte.
+      </li>
+      <li>
+        <strong>Astuce :</strong> Vous pourriez avoir besoin de rendre
+        <strong>réactives</strong> les variables
+        <code>isHighlighted</code>, <code>title</code> et <code>
+        description</code>.
+      </li>
+    </ul>
+  </div>
 </template>
-<script setup lang="ts">
-</script>

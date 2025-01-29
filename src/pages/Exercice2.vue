@@ -1,28 +1,8 @@
 <template>
   <v-container max-width="700">
-    <!-- Bloc d'objectifs pédagogiques -->
-    <h1>Exercice 2</h1>
-    <div class="exe-objectifs">
-      <h2>Objectifs</h2>
-      <ul>
-        <li>
-          Permettre à l'utilisateur de <strong>modifier dynamiquement</strong> le
-          titre et la description de la carte via un formulaire.
-        </li>
-        <li>
-          Modifier les deux champs de formulaire <code>&lt;v-text
-          -field /&gt;</code> et <code>v-textarea /&gt;</code> en utilisant
-          la directive <code>v-model</code> pour les
-          lier aux données <code>title</code> et <code>description</code>.
-        </li>
-        <li>
-          Afficher dynamiquement, en live, les valeurs de <code>title
-        </code> et <code>description</code> sur la carte à la place de
-        <code>*** TITRE ***</code> et <code>*** DESCRIPTION ***</code>.
-        </li>
-      </ul>
-    </div>
-    <v-divider class="my-4"/>
+    <!-- Donnée de l'exercice -->
+    <exercice2-donnee />
+    <!-- Zone de travail pour l'exercice -->
     <div class="exe-zone">
       <h2>Zone d'exercice</h2>
 
@@ -59,6 +39,9 @@
 </template>
 
 <script setup>
+// Importation du composant contenant la donnée de l'exercice
+import Exercice2Donnee from "@/components/donnees/Exercice2Donnee.vue";
+
 // Données préparées pour l'exercice
 const title = "Bienvenue à l'exercice 2"
 const description = "Cet exercice teste la gestion des événements et l'interaction avec les formulaires."

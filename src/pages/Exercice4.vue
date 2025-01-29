@@ -1,39 +1,8 @@
 <template>
   <v-container max-width="700">
-    <h1>Exercice 4</h1>
-    <div class="exe-objectifs">
-      <h2>Objectifs</h2>
-      <ul>
-        <li>
-          Utiliser la directive <code>v-model</code> pour lier
-          le champ de texte <code>&lt;v-text-field&gt;</code> à une
-          variable <code>userInput</code>.
-        </li>
-        <li>
-          Utiliser une <strong>propriété calculée (computed)</strong>
-          pour afficher
-          dynamiquement le nombre de caractères restants
-          par rapport à la limite de caractères <code>MAX_LENGTH</code>.
-        </li>
-        <li>
-          Afficher dynamiquement la valeur de la <strong>propriété
-          calculée</strong> à la place du texte <code>*** CARACTÈRES
-          RESTANTS ***</code>.
-        </li>
-        <li>
-          Afficher le message d'avertissement <code>&lt;v-alert&gt;</code>
-          si l'utilisateur dépasse la limite de caractères.
-        </li>
-        <li>
-          Utiliser une <strong>référence (ref)</strong> pour accéder
-          au champ de texte <code>&lt;v-text-field&gt;</code>
-          et mettre le focus dessus en cliquant sur
-          le bouton <code>Activer le champ de texte</code>.
-        </li>
-
-      </ul>
-    </div>
-    <v-divider class="my-4"/>
+    <!-- Donnée de l'exercice -->
+    <exercice4-donnee />
+    <!-- Zone de travail pour l'exercice -->
     <div class="exe-zone">
       <h2>Zone d'exercice</h2>
       <v-card class="mx-auto my-6 pa-2" max-width="500">
@@ -68,7 +37,10 @@
 </template>
 
 <script setup>
-import {ref} from 'vue';
+// Importation du composant contenant la donnée de l'exercice
+import Exercice4Donnee from "@/components/donnees/Exercice4Donnee.vue";
+// Importation de la fonction réactive ref
+import { ref } from 'vue';
 
 // Constante pour la limite de caractères
 const MAX_LENGTH = 20;
