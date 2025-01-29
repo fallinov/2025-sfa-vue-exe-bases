@@ -12,12 +12,13 @@
         <li>
           Modifier les deux champs de formulaire <code>&lt;v-text
           -field /&gt;</code> et <code>v-textarea /&gt;</code> en utilisant
-          la directive <code>v-model</code> pour
+          la directive <code>v-model</code> pour les
           lier aux données <code>title</code> et <code>description</code>.
         </li>
         <li>
-          Afficher dynamiquement les nouvelles valeurs du titre et de la description
-          sur la carte en fonction des entrées utilisateur.
+          Afficher dynamiquement, en live, les valeurs de <code>title
+        </code> et <code>description</code> sur la carte à la place de
+        <code>*** TITRE ***</code> et <code>*** DESCRIPTION ***</code>.
         </li>
       </ul>
     </div>
