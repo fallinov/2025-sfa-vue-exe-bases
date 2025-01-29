@@ -3,7 +3,6 @@
     <!-- Donnée de l'exercice -->
     <exercice5-donnee />
     <!-- Zone de travail pour l'exercice -->
-    <v-divider class="my-4" />
     <div class="exe-zone">
       <h2>Zone d'exercice</h2>
       <v-card class="mx-auto my-6 pa-2" max-width="500">
