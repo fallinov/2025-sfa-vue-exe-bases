@@ -7,7 +7,7 @@
         <li>
           Utiliser la directive <code>v-model</code> pour lier
           le champ de texte <code>&lt;v-text-field&gt;</code> à une
-          variable <code>inputText</code>.
+          variable <code>userInput</code>.
         </li>
         <li>
           Utiliser une <strong>propriété calculée (computed)</strong>
@@ -73,6 +73,6 @@ import {ref} from 'vue';
 // Constante pour la limite de caractères
 const MAX_LENGTH = 20;
 // Variable réactive pour le texte saisi
-const inputText = ref('');
+const userInput = ref('');
 
 </script>

@@ -4,12 +4,28 @@
     <div class="exe-objectifs">
       <h2>Objectifs</h2>
       <ul>
-        <li>Apprendre à utiliser les <strong>watchers</strong> pour surveiller les changements d’une variable réactive.</li>
         <li>
-          Surveiller la saisie utilisateur et afficher un message lorsque le texte contient le mot <strong>"Pokémon"</strong>.
+          Apprendre à utiliser les <strong>watchers</strong>
+          pour surveiller les changements d’une variable réactive.
         </li>
-        <li>Afficher dynamiquement le nombre de caractères saisis.</li>
-        <li>Utiliser un watcher pour réinitialiser automatiquement la saisie si elle dépasse une certaine longueur.</li>
+        <li>
+          Afficher dynamiquement le nombre de caractères saisis
+          dans la variable <code>userInput</code> à la place de
+          <code>*** CARACTÈRES SAISIS ***</code>.
+        </li>
+        <li>
+          Surveiller avec un <strong>watcher</strong>
+          la saisie utilisateur, la variable
+          <code>userInput</code>
+          et afficher un message <code>&lt;v-alert&gt;</code>
+          lorsque le texte contient le mot <strong>"Pokémon"</strong>
+          en ignorant la casse (majuscules/minuscules).
+        </li>
+        <li>
+          Dans le même <strong>watcher</strong>, réinitialiser
+          automatiquement la saisie, mettre une chaîne vide,
+          si elle dépasse la longueur maximale <code>MAX_LENGTH</code>.
+        </li>
       </ul>
     </div>
     <v-divider class="my-4" />
@@ -18,19 +34,21 @@
       <v-card class="mx-auto my-6 pa-2" max-width="500">
         <v-card-title>Saisie surveillée</v-card-title>
         <v-card-text>
+          <v-alert type="success" class="mb-2">
+            Vous avez mentionné "Pokémon" !
+          </v-alert>
+
           <v-text-field
             v-model="userInput"
             label="Tapez quelque chose"
             placeholder="Essayez d'écrire Pokémon"
             outlined
-          ></v-text-field>
-          <v-card-subtitle>Nombre de caractères : {{ userInput.length }}</v-card-subtitle>
-          <v-alert v-if="containsPokemon" type="success" class="mt-2">
-            Vous avez mentionné "Pokémon" !
-          </v-alert>
-          <v-alert v-if="userInput.length === maxLength" type="warning" class="mt-2">
-            La saisie a atteint la limite maximale et a été réinitialisée.
-          </v-alert>
+          />
+
+          <v-card-subtitle>
+            Nombre de caractères :
+            *** CARACTÈRES SAISIS ***
+          </v-card-subtitle>
         </v-card-text>
       </v-card>
     </div>
@@ -38,37 +56,14 @@
 </template>
 
 <script setup>
-import { ref, watch } from 'vue';
+import { ref } from 'vue';
 
 // Variable réactive pour la saisie utilisateur
 const userInput = ref('');
 
 // Longueur maximale autorisée
-const maxLength = 50;
+const MAX_LENGTH = 20;
 
 // Variable réactive pour indiquer si "Pokémon" est présent
 const containsPokemon = ref(false);
-
-// Watcher pour surveiller la saisie utilisateur
-watch(userInput, (newValue) => {
-  // Vérifie si "Pokémon" est mentionné
-  containsPokemon.value = newValue.toLowerCase().includes('pokémon');
-
-  // Réinitialise la saisie si elle dépasse la longueur maximale
-  if (newValue.length > maxLength) {
-    userInput.value = '';
-  }
-});
 </script>
-
-<style scoped>
-.exe-objectifs {
-  background-color: #f5f5f5;
-  padding: 16px;
-  border-radius: 8px;
-}
-
-.exe-zone {
-  margin-top: 16px;
-}
-</style>
