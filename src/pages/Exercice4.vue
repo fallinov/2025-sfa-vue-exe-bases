@@ -5,40 +5,61 @@
       <h2>Objectifs</h2>
       <ul>
         <li>
-          Utiliser une <strong>propriété calculée</strong> pour afficher dynamiquement le nombre de caractères restants dans une limite définie.
+          Utiliser la directive <code>v-model</code> pour lier
+          le champ de texte <code>&lt;v-text-field&gt;</code> à une
+          variable <code>inputText</code>.
         </li>
         <li>
-          Utiliser une <strong>référence (ref)</strong> pour accéder à un élément du DOM et en modifier son focus.
+          Utiliser une <strong>propriété calculée (computed)</strong>
+          pour afficher
+          dynamiquement le nombre de caractères restants
+          par rapport à la limite de caractères <code>MAX_LENGTH</code>.
         </li>
         <li>
-          Afficher un message lorsque l'utilisateur atteint la limite maximale de caractères autorisés.
+          Afficher dynamiquement la valeur de la <strong>propriété
+          calculée</strong> à la place du texte <code>*** CARACTÈRES
+          RESTANTS ***</code>.
         </li>
+        <li>
+          Afficher le message d'avertissement <code>&lt;v-alert&gt;</code>
+          si l'utilisateur dépasse la limite de caractères.
+        </li>
+        <li>
+          Utiliser une <strong>référence (ref)</strong> pour accéder
+          au champ de texte <code>&lt;v-text-field&gt;</code>
+          et mettre le focus dessus en cliquant sur
+          le bouton <code>Activer le champ de texte</code>.
+        </li>
+
       </ul>
     </div>
-    <v-divider class="my-4" />
+    <v-divider class="my-4"/>
     <div class="exe-zone">
       <h2>Zone d'exercice</h2>
       <v-card class="mx-auto my-6 pa-2" max-width="500">
         <v-card-title>Saisie avec limite de caractères</v-card-title>
+
+        <v-card-subtitle>
+          Caractères restants :
+          <strong>*** CARACTÈRES RESTANTS ***</strong>
+        </v-card-subtitle>
+
         <v-card-text>
-          <v-textarea
-            v-model="userInput"
-            outlined
-            rows="3"
-            ref="textareaRef"
-            label="Tapez votre texte ici"
-            :counter="maxLength"
-          ></v-textarea>
-          <v-alert v-if="remainingChars === 0" type="error" class="mt-4">
+          <v-alert type="error" class="mb-2">
             Vous avez atteint la limite maximale de caractères !
           </v-alert>
-          <v-card-subtitle>
-            Caractères restants : <strong>{{ remainingChars }}</strong>
-          </v-card-subtitle>
+
+          <v-text-field
+            outlined
+            rows="2"
+            label="Tapez votre texte ici"
+            :counter="MAX_LENGTH"
+          />
         </v-card-text>
+
         <v-card-actions>
-          <v-btn color="primary" @click="focusTextarea">
-            Mettre le focus dans la zone de texte
+          <v-btn color="primary">
+            Activer le champ de texte
           </v-btn>
         </v-card-actions>
       </v-card>
@@ -47,20 +68,11 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
+import {ref} from 'vue';
 
-// Variables réactives
-const userInput = ref('');
-const maxLength = 100;
+// Constante pour la limite de caractères
+const MAX_LENGTH = 20;
+// Variable réactive pour le texte saisi
+const inputText = ref('');
 
-// Propriété calculée pour déterminer le nombre de caractères restants
-const remainingChars = computed(() => maxLength - userInput.value.length);
-
-// Référence pour accéder à l'élément de la zone de texte
-const textareaRef = ref(null);
-
-// Fonction pour mettre le focus dans la zone de texte
-const focusTextarea = () => {
-  textareaRef.value.focus();
-};
 </script>
