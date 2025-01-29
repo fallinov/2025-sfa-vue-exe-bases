@@ -8,6 +8,7 @@
 // @use 'vuetify/settings' with (
 //   $color-pack: false
 // );
+
 body {
   font-size: 1.1rem;
   line-height: 1.6;
@@ -36,6 +37,11 @@ code {
   padding: 0.2em 0.4em;
   background: #212121;
   color: #C6FF00;
+}
+
+/* Exercices */
+.exe-objectifs {
+  background-color: purple;
 }
 
 /* Exercices */

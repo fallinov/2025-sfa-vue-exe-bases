@@ -1,75 +1,109 @@
 <template>
   <v-container max-width="700">
-    <h1>Exercice 7</h1>
-    <div class="exe-objectifs">
-      <h2>Objectifs</h2>
-      <ul>
-        <li>Découvrir et utiliser les hooks du <strong>cycle de vie</strong> dans Vue.js.</li>
-        <li>Utiliser <code>onMounted</code> pour exécuter une action lorsque le composant est monté.</li>
-        <li>Utiliser <code>onUpdated</code> pour détecter une mise à jour globale du composant.</li>
-        <li>Utiliser <code>onUnmounted</code> pour nettoyer des actions, comme annuler un intervalle.</li>
-      </ul>
-    </div>
-    <v-divider class="my-4" />
+    <!-- Donnée de l'exercice -->
+    <exercice6-donnee />
+    <!-- Zone de travail pour l'exercice -->
     <div class="exe-zone">
       <h2>Zone d'exercice</h2>
-      <v-card class="mx-auto my-6 pa-2" max-width="500">
-        <v-card-title>Cycle de vie de Vue.js</v-card-title>
-        <v-card-text>
-          <p>Compteur : <strong>{{ counter }}</strong></p>
-          <p>Dernière mise à jour : {{ updatedTimestamp }}</p>
-          <v-btn color="primary" @click="incrementCounter">Incrémenter</v-btn>
-        </v-card-text>
+      <v-card
+        class="mx-auto my-6 pa-2"
+        max-width="500"
+      >
+        <v-text-field
+          v-model="newTask"
+          label="Nouvelle tâche"
+          clearable
+        >
+          <template v-slot:append-inner>
+            <v-btn @click="addTask">Ajouter</v-btn>
+          </template>
+        </v-text-field>
+
+        <v-card-title>Liste des tâches</v-card-title>
+
+        <v-card-subtitle v-if="tasks.length === 0">
+          Il n'y a pas de tâches... chanceux ! 😄
+        </v-card-subtitle>
+
+        <v-list>
+          <v-list-item
+            v-for="task in sortTasks()"
+            :key="task.date"
+          >
+            <template v-slot:prepend>
+              <v-list-item-action start>
+                <v-checkbox-btn v-model="task.completed" />
+              </v-list-item-action>
+            </template>
+
+            <v-list-item-title
+              :class="{ done: task.completed }"
+            >
+              {{ task.title }}
+            </v-list-item-title>
+
+            <v-list-item-subtitle>
+              Créé le {{ new Date(task.date).toLocaleDateString() }}
+              à {{ new Date(task.date).toLocaleTimeString() }}
+            </v-list-item-subtitle>
+          </v-list-item>
+        </v-list>
       </v-card>
     </div>
   </v-container>
 </template>
 
 <script setup>
-import { ref, onMounted, onUpdated, onUnmounted } from 'vue';
+// Importation du composant contenant la donnée de l'exerciced
+import Exercice6Donnee from "@/components/donnees/Exercice6Donnee.vue";
+// Importation de la fonction réactive ref
+import { ref } from 'vue';
 
-// Variables réactives
-const counter = ref(0);
-const updatedTimestamp = ref('');
-let intervalId = null;
+// Tableau réactif de tâches
+const tasks = ref([
+  {
+    "title": "Acheter du Lait",
+    "completed": false,
+    "date": 1738162351961
+  },
+  {
+    "title": "Nettoyer le four",
+    "completed": false,
+    "date": 1737978751912
+  },
+  {
+    "title": "Acheter de l'aspirine",
+    "completed": true,
+    "date": 1737856351933
+  }
+]);
+// Nouvelle tâche à ajouter
+const newTask = ref("");
 
-// Hook exécuté lorsque le composant est monté
-onMounted(() => {
-  console.log('Composant monté !');
-  // Simule un intervalle qui met à jour le compteur automatiquement
-  intervalId = setInterval(() => {
-    counter.value++;
-  }, 2000);
-});
+/**
+ * Fonction qui ajoute une nouvelle tâche à la liste.
+ */
+function addTask () {
+  // Ajout de la nouvelle tâche
+  tasks.value.push({
+    "title": newTask.value,
+    "completed": false,
+    "date": Date.now() // Date actuelle au format timestamp
+  });
+  // Réinitialisation de la saisie
+  newTask.value = "";
+}
 
-// Hook exécuté lorsque le composant est mis à jour (DOM mis à jour)
-onUpdated(() => {
-  console.log('Le composant a été mis à jour !');
-  const now = new Date();
-  updatedTimestamp.value = `${now.toLocaleTimeString()}`;
-});
-
-// Hook exécuté lorsque le composant est démonté
-onUnmounted(() => {
-  console.log('Composant démonté !');
-  // Nettoie l'intervalle pour éviter une fuite de mémoire
-  clearInterval(intervalId);
-});
-
-// Fonction pour incrémenter manuellement le compteur
-const incrementCounter = () => {
-  counter.value++;
-};
+/**
+ * Fonction qui trie les tâches par état de complétion.
+ * @returns {Array} - Tableau de tâches triées.
+ */
+function sortTasks () {
+  return tasks.value.sort((a, b) => a.completed - b.completed);
+}
 </script>
 
-<style scoped>
-.exe-objectifs {
-  background-color: #f5f5f5;
-  padding: 16px;
-  border-radius: 8px;
-}
-
-.exe-zone {
-  margin-top: 16px;
-}
+<style scoped lang="sass">
+.done
+  text-decoration: line-through
 </style>
