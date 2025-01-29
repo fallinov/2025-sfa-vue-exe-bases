@@ -9,11 +9,13 @@
             de noms de Pokémons</strong>.
         </li>
         <li>Utiliser la directive <code>v-for</code> pour parcourir le tableau
-          et créer les éléments de la liste <code>&lt;v-list-item&gt;</code>.
+          de Pokémons et créer dynamiquement
+          les éléments de la liste <code>&lt;v-list-item
+            &gt;</code>.
         </li>
         <li>
-          Utiliser l'index, position dans le tableau,
-          comme clé <code>:key ="index"</code>
+          Utiliser <code>index</code>, position dans le tableau,
+          comme clé <code>:key="index"</code>
           de la directive <code>v-for</code> pour identifier chaque élément
           de la liste.
         </li>
@@ -66,7 +68,7 @@
 <script setup>
 import {ref} from 'vue';
 
-// Tableau des Pokémons réactif
+// Tableau réactif de noms de Pokémons
 const pokemons = ref([
   "Pikachu",
   "Bulbizarre",
