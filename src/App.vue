@@ -34,7 +34,7 @@ const items = ref([
     title: 'Exercice 1',
     subtitle: 'Rendu déclaratif et liaisons d’attributs',
     prependIcon: 'mdi-pencil-outline', // Icône pertinente pour l'exercice
-    to: '/exercice1',
+    to: '/',
   },
   {
     title: 'Exercice 2',
@@ -60,17 +60,17 @@ const items = ref([
     prependIcon: 'mdi-eye-outline', // Icône pour un observateur
     to: '/exercice5',
   },
-  {
-    title: 'Exercice 6',
-    subtitle: 'Cycle de vie d’un composant',
-    prependIcon: 'mdi-lifebuoy', // Icône pour un cycle de vie
-    to: '/exercice6',
-  },
-  {
-    title: 'Exercice 7',
-    subtitle: 'Composants, props et emits',
-    prependIcon: 'mdi-cube-outline', // Icône pour représenter les composants
-    to: '/exercice7',
-  },
+  // {
+  //   title: 'Exercice 6',
+  //   subtitle: 'Cycle de vie d’un composant',
+  //   prependIcon: 'mdi-lifebuoy', // Icône pour un cycle de vie
+  //   to: '/exercice6',
+  // },
+  // {
+  //   title: 'Exercice 7',
+  //   subtitle: 'Composants, props et emits',
+  //   prependIcon: 'mdi-cube-outline', // Icône pour représenter les composants
+  //   to: '/exercice7',
+  // },
 ]);
 </script>
