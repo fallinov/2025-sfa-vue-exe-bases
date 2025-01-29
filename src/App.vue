@@ -56,20 +56,20 @@ const items = ref([
   },
   {
     title: 'Exercice 5',
-    subtitle: 'Composants, props et emits',
-    prependIcon: 'mdi-cube-outline', // Icône pour représenter les composants
+    subtitle: 'Observateurs et watchers',
+    prependIcon: 'mdi-eye-outline', // Icône pour un observateur
     to: '/exercice5',
   },
   {
     title: 'Exercice 6',
-    subtitle: 'Observateurs et watchers',
-    prependIcon: 'mdi-eye-outline', // Icône pour un observateur
+    subtitle: 'Cycle de vie d’un composant',
+    prependIcon: 'mdi-lifebuoy', // Icône pour un cycle de vie
     to: '/exercice6',
   },
   {
     title: 'Exercice 7',
-    subtitle: 'Cycle de vie d’un composant',
-    prependIcon: 'mdi-lifebuoy', // Icône pour un cycle de vie
+    subtitle: 'Composants, props et emits',
+    prependIcon: 'mdi-cube-outline', // Icône pour représenter les composants
     to: '/exercice7',
   },
 ]);

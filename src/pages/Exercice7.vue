@@ -4,26 +4,43 @@
     <div class="exe-objectifs">
       <h2>Objectifs</h2>
       <ul>
-        <li>Découvrir et utiliser les hooks du <strong>cycle de vie</strong> dans Vue.js.</li>
-        <li>
-          Utiliser <code>onMounted</code> pour exécuter une action lorsque le composant est monté (par exemple, charger une donnée simulée).
-        </li>
-        <li>
-          Utiliser <code>onUpdated</code> pour surveiller les changements d’une variable et afficher un message dans la console.
-        </li>
-        <li>
-          Utiliser <code>onUnmounted</code> pour nettoyer une action (par exemple, annuler un intervalle).
-        </li>
+        <li>Créer un composant enfant <code>PokemonCard</code> qui reçoit les données d'un Pokémon via une <strong>prop</strong>.</li>
+        <li>Utiliser un <strong>événement personnalisé</strong> pour permettre au composant enfant de signaler sa suppression au parent.</li>
+        <li>Ajouter un champ de formulaire dans le composant parent pour ajouter un Pokémon à la liste.</li>
+        <li>Afficher une liste de cartes Pokémon dans le composant parent et permettre leur suppression.</li>
       </ul>
     </div>
     <v-divider class="my-4" />
     <div class="exe-zone">
       <h2>Zone d'exercice</h2>
+      <!-- Formulaire pour ajouter un Pokémon -->
+      <v-form @submit.prevent="addPokemon" class="mb-4">
+        <v-text-field
+          v-model="newPokemon"
+          label="Ajouter un Pokémon"
+          placeholder="Entrez le nom d'un Pokémon"
+          outlined
+        ></v-text-field>
+        <v-btn type="submit" color="primary" class="mt-2">
+          Ajouter
+        </v-btn>
+      </v-form>
+
+      <!-- Liste des Pokémon -->
       <v-card class="mx-auto my-6 pa-2" max-width="500">
-        <v-card-title>Cycle de vie de Vue.js</v-card-title>
+        <v-card-title>Liste des Pokémon</v-card-title>
         <v-card-text>
-          <p>Compteur : <strong>{{ counter }}</strong></p>
-          <v-btn color="primary" @click="incrementCounter">Incrémenter</v-btn>
+          <v-alert v-if="pokemons.length === 0" type="info">
+            La liste est vide.
+          </v-alert>
+          <v-list v-else>
+            <PokemonCard
+              v-for="(pokemon, index) in pokemons"
+              :key="index"
+              :pokemonName="pokemon"
+              @remove="removePokemon(index)"
+            />
+          </v-list>
         </v-card-text>
       </v-card>
     </div>
@@ -31,47 +48,26 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUpdated, onUnmounted } from 'vue';
+import { ref } from 'vue';
+import PokemonCard from "@/components/PokemonCard.vue";
 
-// Variables réactives
-const counter = ref(0);
-let intervalId = null;
+// Liste initiale des Pokémon
+const pokemons = ref(["Pikachu", "Bulbizarre", "Salamèche", "Carapuce", "Rondoudou"]);
 
-// Hook exécuté lorsque le composant est monté
-onMounted(() => {
-  console.log('Composant monté !');
-  // Simule un intervalle qui met à jour le compteur automatiquement
-  intervalId = setInterval(() => {
-    counter.value++;
-  }, 1000);
-});
+// Champ de saisie pour un nouveau Pokémon
+const newPokemon = ref('');
 
-// Hook exécuté lorsque la variable "counter" est mise à jour
-onUpdated(() => {
-  console.log(`Le compteur a été mis à jour : ${counter.value}`);
-});
+// Ajouter un Pokémon à la liste
+const addPokemon = () => {
+  const trimmedPokemon = newPokemon.value.trim();
+  if (trimmedPokemon) {
+    pokemons.value.push(trimmedPokemon);
+    newPokemon.value = ''; // Réinitialise le champ de saisie
+  }
+};
 
-// Hook exécuté lorsque le composant est démonté
-onUnmounted(() => {
-  console.log('Composant démonté !');
-  // Nettoie l'intervalle pour éviter une fuite de mémoire
-  clearInterval(intervalId);
-});
-
-// Fonction pour incrémenter manuellement le compteur
-const incrementCounter = () => {
-  counter.value++;
+// Supprimer un Pokémon de la liste
+const removePokemon = (index) => {
+  pokemons.value.splice(index, 1);
 };
 </script>
-
-<style scoped>
-.exe-objectifs {
-  background-color: #f5f5f5;
-  padding: 16px;
-  border-radius: 8px;
-}
-
-.exe-zone {
-  margin-top: 16px;
-}
-</style>

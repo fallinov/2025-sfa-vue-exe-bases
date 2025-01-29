@@ -4,33 +4,26 @@
     <div class="exe-objectifs">
       <h2>Objectifs</h2>
       <ul>
-        <li>Apprendre à utiliser les <strong>watchers</strong> pour surveiller les changements d’une variable réactive.</li>
+        <li>Découvrir et utiliser les hooks du <strong>cycle de vie</strong> dans Vue.js.</li>
         <li>
-          Surveiller la saisie utilisateur et afficher un message lorsque le texte contient le mot <strong>"Pokémon"</strong>.
+          Utiliser <code>onMounted</code> pour exécuter une action lorsque le composant est monté (par exemple, charger une donnée simulée).
         </li>
-        <li>Afficher dynamiquement le nombre de caractères saisis.</li>
-        <li>Utiliser un watcher pour réinitialiser automatiquement la saisie si elle dépasse une certaine longueur.</li>
+        <li>
+          Utiliser <code>onUpdated</code> pour surveiller les changements d’une variable et afficher un message dans la console.
+        </li>
+        <li>
+          Utiliser <code>onUnmounted</code> pour nettoyer une action (par exemple, annuler un intervalle).
+        </li>
       </ul>
     </div>
     <v-divider class="my-4" />
     <div class="exe-zone">
       <h2>Zone d'exercice</h2>
       <v-card class="mx-auto my-6 pa-2" max-width="500">
-        <v-card-title>Saisie surveillée</v-card-title>
+        <v-card-title>Cycle de vie de Vue.js</v-card-title>
         <v-card-text>
-          <v-text-field
-            v-model="userInput"
-            label="Tapez quelque chose"
-            placeholder="Essayez d'écrire Pokémon"
-            outlined
-          ></v-text-field>
-          <v-card-subtitle>Nombre de caractères : {{ userInput.length }}</v-card-subtitle>
-          <v-alert v-if="containsPokemon" type="success" class="mt-2">
-            Vous avez mentionné "Pokémon" !
-          </v-alert>
-          <v-alert v-if="userInput.length === maxLength" type="warning" class="mt-2">
-            La saisie a atteint la limite maximale et a été réinitialisée.
-          </v-alert>
+          <p>Compteur : <strong>{{ counter }}</strong></p>
+          <v-btn color="primary" @click="incrementCounter">Incrémenter</v-btn>
         </v-card-text>
       </v-card>
     </div>
@@ -38,27 +31,37 @@
 </template>
 
 <script setup>
-import { ref, watch } from 'vue';
+import { ref, onMounted, onUpdated, onUnmounted } from 'vue';
 
-// Variable réactive pour la saisie utilisateur
-const userInput = ref('');
+// Variables réactives
+const counter = ref(0);
+let intervalId = null;
 
-// Longueur maximale autorisée
-const maxLength = 50;
-
-// Variable réactive pour indiquer si "Pokémon" est présent
-const containsPokemon = ref(false);
-
-// Watcher pour surveiller la saisie utilisateur
-watch(userInput, (newValue) => {
-  // Vérifie si "Pokémon" est mentionné
-  containsPokemon.value = newValue.toLowerCase().includes('pokémon');
-
-  // Réinitialise la saisie si elle dépasse la longueur maximale
-  if (newValue.length > maxLength) {
-    userInput.value = '';
-  }
+// Hook exécuté lorsque le composant est monté
+onMounted(() => {
+  console.log('Composant monté !');
+  // Simule un intervalle qui met à jour le compteur automatiquement
+  intervalId = setInterval(() => {
+    counter.value++;
+  }, 1000);
 });
+
+// Hook exécuté lorsque la variable "counter" est mise à jour
+onUpdated(() => {
+  console.log(`Le compteur a été mis à jour : ${counter.value}`);
+});
+
+// Hook exécuté lorsque le composant est démonté
+onUnmounted(() => {
+  console.log('Composant démonté !');
+  // Nettoie l'intervalle pour éviter une fuite de mémoire
+  clearInterval(intervalId);
+});
+
+// Fonction pour incrémenter manuellement le compteur
+const incrementCounter = () => {
+  counter.value++;
+};
 </script>
 
 <style scoped>

@@ -4,43 +4,33 @@
     <div class="exe-objectifs">
       <h2>Objectifs</h2>
       <ul>
-        <li>Créer un composant enfant <code>PokemonCard</code> qui reçoit les données d'un Pokémon via une <strong>prop</strong>.</li>
-        <li>Utiliser un <strong>événement personnalisé</strong> pour permettre au composant enfant de signaler sa suppression au parent.</li>
-        <li>Ajouter un champ de formulaire dans le composant parent pour ajouter un Pokémon à la liste.</li>
-        <li>Afficher une liste de cartes Pokémon dans le composant parent et permettre leur suppression.</li>
+        <li>Apprendre à utiliser les <strong>watchers</strong> pour surveiller les changements d’une variable réactive.</li>
+        <li>
+          Surveiller la saisie utilisateur et afficher un message lorsque le texte contient le mot <strong>"Pokémon"</strong>.
+        </li>
+        <li>Afficher dynamiquement le nombre de caractères saisis.</li>
+        <li>Utiliser un watcher pour réinitialiser automatiquement la saisie si elle dépasse une certaine longueur.</li>
       </ul>
     </div>
     <v-divider class="my-4" />
     <div class="exe-zone">
       <h2>Zone d'exercice</h2>
-      <!-- Formulaire pour ajouter un Pokémon -->
-      <v-form @submit.prevent="addPokemon" class="mb-4">
-        <v-text-field
-          v-model="newPokemon"
-          label="Ajouter un Pokémon"
-          placeholder="Entrez le nom d'un Pokémon"
-          outlined
-        ></v-text-field>
-        <v-btn type="submit" color="primary" class="mt-2">
-          Ajouter
-        </v-btn>
-      </v-form>
-
-      <!-- Liste des Pokémon -->
       <v-card class="mx-auto my-6 pa-2" max-width="500">
-        <v-card-title>Liste des Pokémon</v-card-title>
+        <v-card-title>Saisie surveillée</v-card-title>
         <v-card-text>
-          <v-alert v-if="pokemons.length === 0" type="info">
-            La liste est vide.
+          <v-text-field
+            v-model="userInput"
+            label="Tapez quelque chose"
+            placeholder="Essayez d'écrire Pokémon"
+            outlined
+          ></v-text-field>
+          <v-card-subtitle>Nombre de caractères : {{ userInput.length }}</v-card-subtitle>
+          <v-alert v-if="containsPokemon" type="success" class="mt-2">
+            Vous avez mentionné "Pokémon" !
           </v-alert>
-          <v-list v-else>
-            <PokemonCard
-              v-for="(pokemon, index) in pokemons"
-              :key="index"
-              :pokemonName="pokemon"
-              @remove="removePokemon(index)"
-            />
-          </v-list>
+          <v-alert v-if="userInput.length === maxLength" type="warning" class="mt-2">
+            La saisie a atteint la limite maximale et a été réinitialisée.
+          </v-alert>
         </v-card-text>
       </v-card>
     </div>
@@ -48,28 +38,27 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
-import PokemonCard from "@/components/PokemonCard.vue";
+import { ref, watch } from 'vue';
 
-// Liste initiale des Pokémon
-const pokemons = ref(["Pikachu", "Bulbizarre", "Salamèche", "Carapuce", "Rondoudou"]);
+// Variable réactive pour la saisie utilisateur
+const userInput = ref('');
 
-// Champ de saisie pour un nouveau Pokémon
-const newPokemon = ref('');
+// Longueur maximale autorisée
+const maxLength = 50;
 
-// Ajouter un Pokémon à la liste
-const addPokemon = () => {
-  const trimmedPokemon = newPokemon.value.trim();
-  if (trimmedPokemon) {
-    pokemons.value.push(trimmedPokemon);
-    newPokemon.value = ''; // Réinitialise le champ de saisie
+// Variable réactive pour indiquer si "Pokémon" est présent
+const containsPokemon = ref(false);
+
+// Watcher pour surveiller la saisie utilisateur
+watch(userInput, (newValue) => {
+  // Vérifie si "Pokémon" est mentionné
+  containsPokemon.value = newValue.toLowerCase().includes('pokémon');
+
+  // Réinitialise la saisie si elle dépasse la longueur maximale
+  if (newValue.length > maxLength) {
+    userInput.value = '';
   }
-};
-
-// Supprimer un Pokémon de la liste
-const removePokemon = (index) => {
-  pokemons.value.splice(index, 1);
-};
+});
 </script>
 
 <style scoped>
