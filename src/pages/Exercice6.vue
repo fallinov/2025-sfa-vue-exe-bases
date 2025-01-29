@@ -1,19 +1,13 @@
 <template>
   <v-container max-width="700">
-    <h1>Exercice 6</h1>
+    <h1>Exercice 7</h1>
     <div class="exe-objectifs">
       <h2>Objectifs</h2>
       <ul>
         <li>Découvrir et utiliser les hooks du <strong>cycle de vie</strong> dans Vue.js.</li>
-        <li>
-          Utiliser <code>onMounted</code> pour exécuter une action lorsque le composant est monté (par exemple, charger une donnée simulée).
-        </li>
-        <li>
-          Utiliser <code>onUpdated</code> pour surveiller les changements d’une variable et afficher un message dans la console.
-        </li>
-        <li>
-          Utiliser <code>onUnmounted</code> pour nettoyer une action (par exemple, annuler un intervalle).
-        </li>
+        <li>Utiliser <code>onMounted</code> pour exécuter une action lorsque le composant est monté.</li>
+        <li>Utiliser <code>onUpdated</code> pour détecter une mise à jour globale du composant.</li>
+        <li>Utiliser <code>onUnmounted</code> pour nettoyer des actions, comme annuler un intervalle.</li>
       </ul>
     </div>
     <v-divider class="my-4" />
@@ -23,6 +17,7 @@
         <v-card-title>Cycle de vie de Vue.js</v-card-title>
         <v-card-text>
           <p>Compteur : <strong>{{ counter }}</strong></p>
+          <p>Dernière mise à jour : {{ updatedTimestamp }}</p>
           <v-btn color="primary" @click="incrementCounter">Incrémenter</v-btn>
         </v-card-text>
       </v-card>
@@ -35,6 +30,7 @@ import { ref, onMounted, onUpdated, onUnmounted } from 'vue';
 
 // Variables réactives
 const counter = ref(0);
+const updatedTimestamp = ref('');
 let intervalId = null;
 
 // Hook exécuté lorsque le composant est monté
@@ -43,12 +39,14 @@ onMounted(() => {
   // Simule un intervalle qui met à jour le compteur automatiquement
   intervalId = setInterval(() => {
     counter.value++;
-  }, 1000);
+  }, 2000);
 });
 
-// Hook exécuté lorsque la variable "counter" est mise à jour
+// Hook exécuté lorsque le composant est mis à jour (DOM mis à jour)
 onUpdated(() => {
-  console.log(`Le compteur a été mis à jour : ${counter.value}`);
+  console.log('Le composant a été mis à jour !');
+  const now = new Date();
+  updatedTimestamp.value = `${now.toLocaleTimeString()}`;
 });
 
 // Hook exécuté lorsque le composant est démonté

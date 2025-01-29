@@ -33,6 +33,7 @@
       <h2>Zone d'exercice</h2>
       <v-card class="mx-auto my-6 pa-2" max-width="500">
         <v-card-title>Saisie surveillée</v-card-title>
+
         <v-card-text>
           <v-alert type="success" class="mb-2">
             Vous avez mentionné "Pokémon" !
