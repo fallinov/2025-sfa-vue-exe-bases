@@ -3,28 +3,12 @@
   <div class="exe-objectifs">
     <h2>Objectifs</h2>
     <ul>
-      <li>
-        Apprendre à utiliser les <strong>watchers</strong>
-        pour surveiller les changements d’une variable réactive.
-      </li>
-      <li>
-        Afficher dynamiquement le nombre de caractères saisis
-        dans la variable <code>userInput</code> à la place de
-        <code>*** CARACTÈRES SAISIS ***</code>.
-      </li>
-      <li>
-        Surveiller avec un <strong>watcher</strong>
-        la saisie utilisateur, la variable
-        <code>userInput</code>
-        et afficher un message <code>&lt;v-alert&gt;</code>
-        lorsque le texte contient le mot <strong>"Pokémon"</strong>
-        en ignorant la casse (majuscules/minuscules).
-      </li>
-      <li>
-        Dans le même <strong>watcher</strong>, réinitialiser
-        automatiquement la saisie, mettre une chaîne vide,
-        si elle dépasse la longueur maximale <code>MAX_LENGTH</code>.
-      </li>
+      <li>On affiche un message si il n'y a pas de tâches à faire.</li>
+      <li>Un champ texte accompagné d'un bouton "Ajouter" sera présent au dessus de la liste et permettra d'ajouter une nouvelle tâche.</li>
+      <li>Pour chaque tâche, une case à cocher permettra de marquer la tâche comme faite.</li>
+      <li>Une tâche terminée sera barrée (à l'aide de CSS).</li>
+      <li>Les tâches à faire seront toujours affichées en premier.</li>
+      <li>Une case, en bas de liste, permettra de masquer les tâches terminées.</li>
     </ul>
   </div>
 </template>
