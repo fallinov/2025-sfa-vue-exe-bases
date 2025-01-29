@@ -60,6 +60,12 @@ const items = ref([
     prependIcon: 'mdi-eye-outline', // Icône pour un observateur
     to: '/exercice5',
   },
+  {
+    title: 'Exercice 6',
+    subtitle: 'Liste de tâches',
+    prependIcon: 'mdi-check-all', // Icône pour une liste de tâches
+    to: '/exercice6',
+  }
   // {
   //   title: 'Exercice 6',
   //   subtitle: 'Cycle de vie d’un composant',
