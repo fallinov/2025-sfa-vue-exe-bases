@@ -9,7 +9,7 @@
       </li>
       <li>
         Modifier les deux champs de formulaire <code>&lt;v-text
-        -field /&gt;</code> et <code>v-textarea /&gt;</code> en utilisant
+        -field /&gt;</code> et <code>&lt;v-textarea /&gt;</code> en utilisant
         la directive <code>v-model</code> pour les
         lier aux données <code>title</code> et <code>description</code>.
       </li>
