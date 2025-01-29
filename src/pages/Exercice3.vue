@@ -10,19 +10,25 @@
         max-width="300"
       >
         <v-card-title>Liste de Pokémons</v-card-title>
-
-        <v-card-subtitle class="text-center">
+        <v-card-subtitle
+          v-if="pokemons.length < 1"
+          class="text-center"
+        >
           La liste est vide.
         </v-card-subtitle>
 
         <v-list>
-          <v-list-item>
+          <v-list-item
+            v-for="(pokemonParcouru, index) in pokemons"
+            :key="index"
+          >
             <v-list-item-title>
-              *** POKEMON ***
+              {{ pokemonParcouru }}
             </v-list-item-title>
 
             <template v-slot:append>
               <v-btn
+                @click="removePokemon(index)"
                 icon="mdi-delete"
                 variant="text"
               ></v-btn>
