@@ -95,11 +95,11 @@ function addTask () {
 }
 
 /**
- * Fonction qui trie les tâches par état de complétion.
+ * Fonction qui trie les tâches par date de création.
  * @returns {Array} - Tableau de tâches triées.
  */
 function sortTasks () {
-  return tasks.value.sort((a, b) => a.completed - b.completed);
+  return tasks.value.sort((a, b) => b.date - a.date);
 }
 </script>
 
