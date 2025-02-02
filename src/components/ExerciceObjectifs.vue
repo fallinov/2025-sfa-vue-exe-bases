@@ -1,26 +1,25 @@
 <template>
-  <v-container>
-    <v-expansion-panels variant="accordion">
-      <v-expansion-panel
-        v-for="(section, index) in sections"
-        :key="index"
-      >
-        <v-expansion-panel-title>
-          <span v-html="section.title" />
-        </v-expansion-panel-title>
-        <v-expansion-panel-text>
-          <div v-html="section.content" />
-        </v-expansion-panel-text>
-      </v-expansion-panel>
-    </v-expansion-panels>
-  </v-container>
+  <h1 class="mb-4">Exercice {{ props.number }}</h1>
+  <v-expansion-panels class="mb-6" variant="accordion">
+    <v-expansion-panel
+      v-for="(section, index) in sections"
+      :key="index"
+    >
+      <v-expansion-panel-title>
+        <span v-html="section.title"/>
+      </v-expansion-panel-title>
+      <v-expansion-panel-text>
+        <div v-html="section.content"/>
+      </v-expansion-panel-text>
+    </v-expansion-panel>
+  </v-expansion-panels>
 </template>
 
 <script setup>
-import { ref, onMounted, computed } from 'vue';
+import {ref, onMounted, computed} from 'vue';
 import MarkdownIt from 'markdown-it';
 
-let props = defineProps({fichier: String});
+let props = defineProps({number: String});
 
 // Initialisation de MarkdownIt
 const markdown = new MarkdownIt();
@@ -29,7 +28,7 @@ const source = ref('');
 // Import dynamique du fichier Markdown
 onMounted(async () => {
   try {
-    const response = await fetch(`./exercices/${props.fichier}`);
+    const response = await fetch(`./exercices/${props.number}.md`);
     if (!response.ok) throw new Error('Erreur de chargement du fichier');
     source.value = await response.text();
   } catch (error) {
@@ -68,14 +67,15 @@ const sections = computed(() => {
 
 <style scoped lang="sass">
 .v-expansion-panel-title
-  :deep(h2) // :deep() permet de cibler les éléments enfants de manière profonde
-    font-size: 1.125rem
+  :deep(h2)
+       font-size: 1.125rem
 
 .v-expansion-panel-text
   :deep(ul)
     padding: 0
     padding-left: 1.5rem
     margin: 0
+
     li
       padding: .25em 0
       margin: 0
