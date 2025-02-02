@@ -1,7 +1,7 @@
 <template>
   <v-container max-width="700">
     <!-- Donnée de l'exercice -->
-    <exercice1-donnee />
+    <exercice-objectifs number="1" />
     <!-- Zone de travail pour l'exercice -->
     <div class="exe-zone">
       <h2>Zone d'exercice</h2>
@@ -33,6 +33,7 @@ import Exercice1Donnee from "@/components/donnees/Exercice1Donnee.vue";
 
 // Importation de la fonction réactive ref
 import { ref } from 'vue';
+import ExerciceObjectifs from "@/components/ExerciceObjectifs.vue";
 
 // Données préparées pour l'exercice
 // SUGGESTION : Pensez à rendre ces données réactives pour qu'elles puissent être mises à jour dynamiquement.

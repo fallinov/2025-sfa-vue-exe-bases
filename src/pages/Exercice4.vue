@@ -1,7 +1,7 @@
 <template>
   <v-container max-width="700">
     <!-- Donnée de l'exercice -->
-    <exercice4-donnee />
+    <exercice-objectifs number="4" />
     <!-- Zone de travail pour l'exercice -->
     <div class="exe-zone">
       <h2>Zone d'exercice</h2>
@@ -50,6 +50,7 @@
 import Exercice4Donnee from "@/components/donnees/Exercice4Donnee.vue";
 // Importation de la fonction réactive ref
 import {computed, ref} from 'vue';
+import ExerciceObjectifs from "@/components/ExerciceObjectifs.vue";
 
 // Constante pour la limite de caractères
 const MAX_LENGTH = 20;

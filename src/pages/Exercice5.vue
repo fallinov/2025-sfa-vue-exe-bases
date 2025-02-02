@@ -1,7 +1,7 @@
 <template>
   <v-container max-width="700">
     <!-- Donnée de l'exercice -->
-    <exercice5-donnee />
+    <exercice-objectifs number="5" />
     <!-- Zone de travail pour l'exercice -->
     <div class="exe-zone">
       <h2>Zone d'exercice</h2>
@@ -39,6 +39,7 @@
 import Exercice5Donnee from "@/components/donnees/Exercice5Donnee.vue";
 // Importation de la fonction réactive ref
 import { ref, watch } from 'vue';
+import ExerciceObjectifs from "@/components/ExerciceObjectifs.vue";
 
 // Variable réactive pour la saisie utilisateur
 const userInput = ref('');

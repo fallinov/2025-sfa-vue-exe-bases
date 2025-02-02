@@ -1,7 +1,7 @@
 <template>
   <v-container max-width="700">
     <!-- Donnée de l'exercice -->
-    <exercice3-donnee />
+    <exercice-objectifs number="3" />
     <!-- Zone de travail pour l'exercice -->
     <div class="exe-zone">
       <h2>Zone d'exercice</h2>
@@ -45,6 +45,7 @@
 import Exercice3Donnee from "@/components/donnees/Exercice3Donnee.vue";
 // Importation de la fonction réactive ref
 import {ref} from 'vue';
+import ExerciceObjectifs from "@/components/ExerciceObjectifs.vue";
 
 // Tableau réactif de noms de Pokémons
 const pokemons = ref([
