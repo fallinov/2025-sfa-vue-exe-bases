@@ -36,10 +36,10 @@
 
 <script setup>
 // Importation du composant contenant la donnée de l'exerciced
-import Exercice5Donnee from "@/components/donnees/Exercice5Donnee.vue";
+import ExerciceObjectifs from "@/components/ExerciceObjectifs.vue";
+
 // Importation de la fonction réactive ref
 import { ref, watch } from 'vue';
-import ExerciceObjectifs from "@/components/ExerciceObjectifs.vue";
 
 // Variable réactive pour la saisie utilisateur
 const userInput = ref('');

@@ -47,10 +47,10 @@
 
 <script setup>
 // Importation du composant contenant la donnée de l'exercice
-import Exercice4Donnee from "@/components/donnees/Exercice4Donnee.vue";
+import ExerciceObjectifs from "@/components/ExerciceObjectifs.vue";
+
 // Importation de la fonction réactive ref
 import {computed, ref} from 'vue';
-import ExerciceObjectifs from "@/components/ExerciceObjectifs.vue";
 
 // Constante pour la limite de caractères
 const MAX_LENGTH = 20;

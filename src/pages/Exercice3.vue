@@ -42,10 +42,10 @@
 
 <script setup>
 // Importation du composant contenant la donnée de l'exercice
-import Exercice3Donnee from "@/components/donnees/Exercice3Donnee.vue";
+import ExerciceObjectifs from "@/components/ExerciceObjectifs.vue";
+
 // Importation de la fonction réactive ref
 import {ref} from 'vue';
-import ExerciceObjectifs from "@/components/ExerciceObjectifs.vue";
 
 // Tableau réactif de noms de Pokémons
 const pokemons = ref([

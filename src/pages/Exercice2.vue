@@ -42,10 +42,10 @@
 
 <script setup>
 // Importation du composant contenant la donnée de l'exercice
-import Exercice2Donnee from "@/components/donnees/Exercice2Donnee.vue";
+import ExerciceObjectifs from "@/components/ExerciceObjectifs.vue";
+
 // Importation de la fonction réactive ref
 import { ref } from 'vue';
-import ExerciceObjectifs from "@/components/ExerciceObjectifs.vue";
 
 // Données préparées pour l'exercice
 const title = ref("Bienvenue à l'exercice 2")
