@@ -13,6 +13,7 @@
           v-model="newTask"
           label="Nouvelle tâche"
           clearable
+          @keydown.enter="addTask"
         >
           <template v-slot:append-inner>
             <v-btn @click="addTask">Ajouter</v-btn>
@@ -57,7 +58,7 @@
 // Importation du composant ExerciceObjectifs
 import ExerciceObjectifs from "@/components/ExerciceObjectifs.vue";
 // Importation de la fonction réactive ref
-import { ref } from 'vue';
+import {ref, watch} from 'vue';
 
 // Tableau réactif de tâches
 const tasks = ref([
@@ -101,6 +102,15 @@ function addTask () {
 function sortTasks () {
   return tasks.value.sort((a, b) => b.date - a.date);
 }
+
+/* Watcher qui efface toutes les taches si l'utlisateur entre "delete"
+dans le champ de saisie */
+watch(newTask, (value) => {
+  if (value.toLowerCase() === "delete") {
+    tasks.value = [];
+    newTask.value = "";
+  }
+});
 </script>
 
 <style scoped lang="sass">
