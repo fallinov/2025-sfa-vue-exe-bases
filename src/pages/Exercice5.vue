@@ -1,7 +1,7 @@
 <template>
   <v-container max-width="700">
     <!-- Donnée de l'exercice -->
-    <exercice5-donnee />
+    <exercice-objectifs number="5" />
     <!-- Zone de travail pour l'exercice -->
     <div class="exe-zone">
       <h2>Zone d'exercice</h2>
@@ -32,7 +32,7 @@
 
 <script setup>
 // Importation du composant contenant la donnée de l'exerciced
-import Exercice5Donnee from "@/components/donnees/Exercice5Donnee.vue";
+import ExerciceObjectifs from "@/components/ExerciceObjectifs.vue";
 // Importation de la fonction réactive ref
 import { ref } from 'vue';
 

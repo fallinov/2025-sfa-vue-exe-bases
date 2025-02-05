@@ -1,7 +1,7 @@
 <template>
   <v-container max-width="700">
-    <!-- Donnée de l'exercice -->
-    <exercice6-donnee />
+    <!-- Données de l'exercice -->
+    <exercice-objectifs number="6"/>
     <!-- Zone de travail pour l'exercice -->
     <div class="exe-zone">
       <h2>Zone d'exercice</h2>
@@ -14,7 +14,7 @@
           clearable
         >
           <template v-slot:append-inner>
-            <v-btn @click="addTask">Ajouter</v-btn>
+            <v-btn>Ajouter</v-btn>
           </template>
         </v-text-field>
 
@@ -33,12 +33,12 @@
             </template>
 
             <v-list-item-title>
-              *** TÂCHE ***
+              *** Titre de la tâche ***
             </v-list-item-title>
 
             <v-list-item-subtitle>
-              Créé le *** DATE ***
-              à *** HEURE ***
+              Créé le *** Date ***
+              à *** Heure ***
             </v-list-item-subtitle>
           </v-list-item>
         </v-list>
@@ -48,10 +48,10 @@
 </template>
 
 <script setup>
-// Importation du composant contenant la donnée de l'exerciced
-import Exercice6Donnee from "@/components/donnees/Exercice6Donnee.vue";
+// Importation du composant ExerciceObjectifs
+import ExerciceObjectifs from "@/components/ExerciceObjectifs.vue";
 // Importation de la fonction réactive ref
-import { ref } from 'vue';
+import {ref} from 'vue';
 
 // Tableau réactif de tâches
 const tasks = ref([
@@ -71,6 +71,8 @@ const tasks = ref([
     "date": 1737856351933
   }
 ]);
+// Nouvelle tâche à ajouter
+const newTask = ref("*** Nouvelle tâche ***");
 
 /**
  * Fonction qui ajoute une nouvelle tâche à la liste.
@@ -78,15 +80,15 @@ const tasks = ref([
 function addTask () {
   // Ajout de la nouvelle tâche
   tasks.value.push({
-    "title": "Nouvelle tâche",
+    "title": newTask.value,
     "completed": false,
     "date": Date.now() // Date actuelle au format timestamp
   });
+  // Réinitialisation de la saisie
+  newTask.value = "";
 }
-
 </script>
 
 <style scoped lang="sass">
-.done
-  text-decoration: line-through
+
 </style>

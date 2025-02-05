@@ -1,7 +1,7 @@
 <template>
   <v-container max-width="700">
     <!-- Donnée de l'exercice -->
-    <exercice2-donnee />
+    <exercice-objectifs number="2" />
     <!-- Zone de travail pour l'exercice -->
     <div class="exe-zone">
       <h2>Zone d'exercice</h2>
@@ -40,7 +40,7 @@
 
 <script setup>
 // Importation du composant contenant la donnée de l'exercice
-import Exercice2Donnee from "@/components/donnees/Exercice2Donnee.vue";
+import ExerciceObjectifs from "@/components/ExerciceObjectifs.vue";
 
 // Données préparées pour l'exercice
 const title = "Bienvenue à l'exercice 2"
