@@ -1,16 +1,8 @@
 <template>
   <v-container max-width="700">
-    <h1>Exercice 7</h1>
-    <div class="exe-objectifs">
-      <h2>Objectifs</h2>
-      <ul>
-        <li>Découvrir et utiliser les hooks du <strong>cycle de vie</strong> dans Vue.js.</li>
-        <li>Utiliser <code>onMounted</code> pour exécuter une action lorsque le composant est monté.</li>
-        <li>Utiliser <code>onUpdated</code> pour détecter une mise à jour globale du composant.</li>
-        <li>Utiliser <code>onUnmounted</code> pour nettoyer des actions, comme annuler un intervalle.</li>
-      </ul>
-    </div>
-    <v-divider class="my-4" />
+    <!-- Données de l'exercice -->
+    <exercice-objectifs number="7"/>
+    <!-- Zone de travail pour l'exercice -->
     <div class="exe-zone">
       <h2>Zone d'exercice</h2>
       <v-card class="mx-auto my-6 pa-2" max-width="500">
@@ -27,6 +19,7 @@
 
 <script setup>
 import { ref, onMounted, onUpdated, onUnmounted } from 'vue';
+import ExerciceObjectifs from "@/components/ExerciceObjectifs.vue";
 
 // Variables réactives
 const counter = ref(0);
