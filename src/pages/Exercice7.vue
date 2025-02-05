@@ -6,53 +6,51 @@
     <div class="exe-zone">
       <h2>Zone d'exercice</h2>
       <v-card class="mx-auto my-6 pa-2" max-width="500">
-        <v-card-title>Cycle de vie de Vue.js</v-card-title>
+        <v-card-title>Cyle de vie d'un composant Vue.js</v-card-title>
+
         <v-card-text>
-          <p>Compteur : <strong>{{ counter }}</strong></p>
-          <p>Dernière mise à jour : {{ updatedTimestamp }}</p>
-          <v-btn color="primary" @click="incrementCounter">Incrémenter</v-btn>
+          {{ count }}
         </v-card-text>
+
+        <v-card-actions>
+          <v-btn color="primary">
+            Activer le champ de texte
+          </v-btn>
+        </v-card-actions>
       </v-card>
+      <v-card
+        class="mx-auto my-6 pa-2"
+        max-width="500"
+      >
+        <p>Nombre actuel : {{ count }}</p>
+        <v-btn @click="increment">Incrémenter</v-btn>
+      </v-card>
+
     </div>
   </v-container>
 </template>
 
 <script setup>
-import { ref, onMounted, onUpdated, onUnmounted } from 'vue';
 import ExerciceObjectifs from "@/components/ExerciceObjectifs.vue";
+import {ref, onMounted, onUpdated, onUnmounted} from 'vue';
 
-// Variables réactives
-const counter = ref(0);
-const updatedTimestamp = ref('');
-let intervalId = null;
+const count = ref(0);
 
-// Hook exécuté lorsque le composant est monté
-onMounted(() => {
-  console.log('Composant monté !');
-  // Simule un intervalle qui met à jour le compteur automatiquement
-  intervalId = setInterval(() => {
-    counter.value++;
-  }, 2000);
-});
-
-// Hook exécuté lorsque le composant est mis à jour (DOM mis à jour)
-onUpdated(() => {
-  console.log('Le composant a été mis à jour !');
-  const now = new Date();
-  updatedTimestamp.value = `${now.toLocaleTimeString()}`;
-});
-
-// Hook exécuté lorsque le composant est démonté
-onUnmounted(() => {
-  console.log('Composant démonté !');
-  // Nettoie l'intervalle pour éviter une fuite de mémoire
-  clearInterval(intervalId);
-});
-
-// Fonction pour incrémenter manuellement le compteur
-const incrementCounter = () => {
-  counter.value++;
+const increment = () => {
+  count.value++;
 };
+
+onMounted(() => {
+  alert('Composant monté avec succès !');
+});
+
+onUpdated(() => {
+  alert('Composant mis à jour !');
+});
+
+onUnmounted(() => {
+  alert('Composant démonté !');
+});
 </script>
 
 <style scoped>
