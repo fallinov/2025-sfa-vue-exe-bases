@@ -1,7 +1,7 @@
 <template>
   <v-container max-width="700">
-    <!-- Donnée de l'exercice -->
-    <exercice6-donnee />
+    <!-- Données de l'exercice -->
+    <exercice-objectifs number="6"/>
     <!-- Zone de travail pour l'exercice -->
     <div class="exe-zone">
       <h2>Zone d'exercice</h2>
@@ -12,6 +12,7 @@
         <v-text-field
           label="Nouvelle tâche"
           clearable
+          @keydown.enter="addTask"
         >
           <template v-slot:append-inner>
             <v-btn @click="addTask">Ajouter</v-btn>
@@ -48,10 +49,10 @@
 </template>
 
 <script setup>
-// Importation du composant contenant la donnée de l'exerciced
-import Exercice6Donnee from "@/components/donnees/Exercice6Donnee.vue";
+// Importation du composant ExerciceObjectifs
+import ExerciceObjectifs from "@/components/ExerciceObjectifs.vue";
 // Importation de la fonction réactive ref
-import { ref } from 'vue';
+import {ref, watch} from 'vue';
 
 // Tableau réactif de tâches
 const tasks = ref([
@@ -83,6 +84,23 @@ function addTask () {
     "date": Date.now() // Date actuelle au format timestamp
   });
 }
+
+/**
+ * Fonction qui trie les tâches par date de création.
+ * @returns {Array} - Tableau de tâches triées.
+ */
+function sortTasks () {
+  return tasks.value.sort((a, b) => b.date - a.date);
+}
+
+/* Watcher qui efface toutes les taches si l'utlisateur entre "delete"
+dans le champ de saisie */
+watch(newTask, (value) => {
+  if (value.toLowerCase() === "delete") {
+    tasks.value = [];
+    newTask.value = "";
+  }
+});
 
 </script>
 
