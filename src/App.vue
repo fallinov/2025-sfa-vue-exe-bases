@@ -65,18 +65,31 @@ const items = ref([
     subtitle: 'Liste de tâches',
     prependIcon: 'mdi-check-all', // Icône pour une liste de tâches
     to: '/exercice6',
-  }
-  // {
-  //   title: 'Exercice 6',
-  //   subtitle: 'Cycle de vie d’un composant',
-  //   prependIcon: 'mdi-lifebuoy', // Icône pour un cycle de vie
-  //   to: '/exercice6',
-  // },
-  // {
-  //   title: 'Exercice 7',
-  //   subtitle: 'Composants, props et emits',
-  //   prependIcon: 'mdi-cube-outline', // Icône pour représenter les composants
-  //   to: '/exercice7',
-  // },
+  },
+  {
+    title: 'Exercice 7',
+    subtitle: 'Cycle de vie de Vue.js',
+    prependIcon: 'mdi-lifebuoy', // Icône pour le cycle de vie
+    to: '/exercice7',
+  },
+  {
+    title: 'Exercice 8',
+    subtitle: 'Composants',
+    prependIcon: 'mdi-view-module', // Icône pour un composant
+    to: '/exercice8',
+  },
+  {
+    title: 'Exercice 9',
+    subtitle: 'Slots et contenu nommé',
+    prependIcon: 'mdi-card-text-outline', // Icône pour un slot
+    to: '/exercice9',
+  },/*
+  {
+    title: 'Exercice 10',
+    subtitle: 'Composition API',
+    prependIcon: 'mdi-code-tags', // Icône pour la composition
+    to: '/exercice10',
+  },*/
+
 ]);
 </script>
