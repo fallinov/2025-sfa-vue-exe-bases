@@ -83,13 +83,13 @@ const items = ref([
     subtitle: 'Slots et contenu nommé',
     prependIcon: 'mdi-card-text-outline', // Icône pour un slot
     to: '/exercice9',
-  },
+  },/*
   {
     title: 'Exercice 10',
     subtitle: 'Composition API',
     prependIcon: 'mdi-code-tags', // Icône pour la composition
     to: '/exercice10',
-  },
+  },*/
 
 ]);
 </script>
