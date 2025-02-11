@@ -1,16 +1,8 @@
 <template>
   <v-container max-width="700">
-    <h1>Exercice 8</h1>
-    <div class="exe-objectifs">
-      <h2>Objectifs</h2>
-      <ul>
-        <li>Créer un composant enfant <code>PokemonCard</code> qui reçoit les données d'un Pokémon via une <strong>prop</strong>.</li>
-        <li>Utiliser un <strong>événement personnalisé</strong> pour permettre au composant enfant de signaler sa suppression au parent.</li>
-        <li>Ajouter un champ de formulaire dans le composant parent pour ajouter un Pokémon à la liste.</li>
-        <li>Afficher une liste de cartes Pokémon dans le composant parent et permettre leur suppression.</li>
-      </ul>
-    </div>
-    <v-divider class="my-4" />
+    <!-- Données de l'exercice -->
+    <exercice-objectifs number="8"/>
+    <!-- Zone de travail pour l'exercice -->
     <div class="exe-zone">
       <h2>Zone d'exercice</h2>
       <!-- Formulaire pour ajouter un Pokémon -->
@@ -50,6 +42,7 @@
 <script setup>
 import { ref } from 'vue';
 import PokemonCard from "@/components/PokemonCard.vue";
+import ExerciceObjectifs from "@/components/ExerciceObjectifs.vue";
 
 // Liste initiale des Pokémon
 const pokemons = ref(["Pikachu", "Bulbizarre", "Salamèche", "Carapuce", "Rondoudou"]);
